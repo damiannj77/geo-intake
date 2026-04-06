@@ -330,12 +330,7 @@
     <p>Generative Engine Optimization by E5</p>
   </div>
 
-  <form action="https://formsubmit.co/damian@marketingfunnelautomation.com" method="POST">
-    <!-- FormSubmit config -->
-    <input type="hidden" name="_subject" value="New GEO Intake Submission">
-    <input type="hidden" name="_captcha" value="true">
-    <input type="hidden" name="_template" value="table">
-    <input type="text" name="_honey" style="display:none">
+  <form id="intake-form">
 
     <!-- ────────────────────────────────────── -->
     <!-- SECTION 1: Required                    -->
@@ -556,6 +551,36 @@
     document.querySelectorAll('.plan').forEach(p => p.classList.remove('selected'));
     el.classList.add('selected');
   }
+
+  document.getElementById('intake-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = this.querySelector('.submit-btn');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    var formData = new FormData(this);
+    var data = {};
+    formData.forEach(function(value, key) { data[key] = value; });
+
+    fetch('https://script.google.com/macros/s/AKfycbxmr9HX0x-Y4wg2hbN51ZECnYX-cNVkbfc8b2-TTrAcfLYhWnYeoathlTki_Lg7UcvPDA/exec', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+    .then(function() {
+      document.querySelector('.page-wrapper').innerHTML =
+        '<div class="header">' +
+          '<div class="badge">Beta Program</div>' +
+          '<h1>Thank You!</h1>' +
+          '<p>Your information has been submitted successfully. We\'ll get your GEO engine running within 3-5 business days.</p>' +
+        '</div>';
+      window.scrollTo(0, 0);
+    })
+    .catch(function() {
+      btn.textContent = 'Submit My Information';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again.');
+    });
+  });
 </script>
 
 </body>
