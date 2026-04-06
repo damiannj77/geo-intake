@@ -564,6 +564,8 @@
 
     fetch('https://script.google.com/macros/s/AKfycbxmr9HX0x-Y4wg2hbN51ZECnYX-cNVkbfc8b2-TTrAcfLYhWnYeoathlTki_Lg7UcvPDA/exec', {
       method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(data)
     })
     .then(function() {
