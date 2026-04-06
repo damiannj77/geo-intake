@@ -472,10 +472,21 @@
       </div>
 
       <div class="field">
-        <label for="site_access">Website Login</label>
-        <textarea id="site_access" name="Website Login" placeholder="We need admin access to your website to implement GEO changes. Please share your login details here (username + password, or invite us as an admin/collaborator)."></textarea>
-        <div class="hint">WordPress users: go to Users &rarr; Profile &rarr; Application Passwords to generate a secure app password (don't share your main login). For Wix, Squarespace, etc.: you can invite us as a collaborator from your site's settings.</div>
+        <label for="login_url">Website Login URL</label>
+        <input type="url" id="login_url" name="Website Login URL" placeholder="e.g. https://yoursite.com/wp-admin or your platform's login page">
       </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="login_user">Username</label>
+          <input type="text" id="login_user" name="Website Username">
+        </div>
+        <div class="field">
+          <label for="login_pass">Password</label>
+          <input type="text" id="login_pass" name="Website Password">
+        </div>
+      </div>
+      <div class="hint" style="margin-top: -14px; margin-bottom: 8px;">We need admin access to implement GEO changes on your site. WordPress users: you can generate an Application Password under Users &rarr; Profile.</div>
     </div>
 
     <!-- ────────────────────────────────────── -->
